@@ -3,45 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đoán Tỉ Số Trận Đấu</title>
+    <title>Bảng Tỉ Số Trận Bóng Đá</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
-            background-color: #f4f4f9;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
         }
+
         .container {
+            width: 80%;
+            margin: 20px auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        input[type="number"] {
-            padding: 10px;
-            width: 50px;
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
             text-align: center;
-            font-size: 16px;
-            margin: 10px 5px;
         }
-        button {
+
+        th {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
         }
-        button:hover {
-            background-color: #45a049;
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 18px;
+
+        .score {
+            font-size: 2em;
             font-weight: bold;
+        }
+
+        .team-name {
+            font-size: 1.2em;
             color: #333;
         }
     </style>
@@ -49,47 +60,26 @@
 <body>
 
     <div class="container">
-        <h2>Đoán Tỉ Số Trận Đấu</h2>
-        <p>Nhập tỉ số của đội nhà và đội khách:</p>
-        <form id="scoreForm">
-            <input type="number" id="homeScore" placeholder="Đội nhà" min="0" required>
-            <input type="number" id="awayScore" placeholder="Đội khách" min="0" required>
-            <br>
-            <button type="button" onclick="checkScore()">Đoán</button>
-        </form>
-
-        <div id="result"></div>
+        <h1>Trận Bóng Đá Giữa Hai Đội</h1>
+        
+        <table>
+            <tr>
+                <th>Đội</th>
+                <th>Thời gian</th>
+                <th>Tỉ Số</th>
+            </tr>
+            <tr>
+                <td class="team-name">Đội 1</td>
+                <td class="score">90 phút</td>
+                <td class="score">3</td>
+            </tr>
+            <tr>
+                <td class="team-name">Đội 2</td>
+                <td class="score">90 phút</td>
+                <td class="score">2</td>
+            </tr>
+        </table>
     </div>
-
-    <script>
-        function checkScore() {
-            const homeScore = document.getElementById('homeScore').value;
-            const awayScore = document.getElementById('awayScore').value;
-
-            if (homeScore === "" || awayScore === "") {
-                document.getElementById('result').innerHTML = "Vui lòng nhập đầy đủ tỉ số!";
-                document.getElementById('result').style.color = "red";
-                return;
-            }
-
-            // Cập nhật kết quả
-            let resultMessage = `Tỉ số bạn đoán: Đội nhà ${homeScore} - ${awayScore} Đội khách.`;
-
-            // Bạn có thể thay đổi phần này để kiểm tra tỉ số thực tế nếu cần
-            let actualHomeScore = 2; // Tỉ số thực tế của đội nhà
-            let actualAwayScore = 1; // Tỉ số thực tế của đội khách
-
-            if (parseInt(homeScore) === actualHomeScore && parseInt(awayScore) === actualAwayScore) {
-                resultMessage += " Bạn đoán đúng!";
-                document.getElementById('result').style.color = "green";
-            } else {
-                resultMessage += " Bạn đoán sai!";
-                document.getElementById('result').style.color = "red";
-            }
-
-            document.getElementById('result').innerHTML = resultMessage;
-        }
-    </script>
 
 </body>
 </html>
